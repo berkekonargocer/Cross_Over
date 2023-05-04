@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33417.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cross_Over_Game_CPP", "Cross_Over_Game_CPP.vcxproj", "{FB8EA0F2-AFC0-4D78-8021-F0C77DA36F6D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB8EA0F2-AFC0-4D78-8021-F0C77DA36F6D}.Debug|x64.ActiveCfg = Debug|x64
+		{FB8EA0F2-AFC0-4D78-8021-F0C77DA36F6D}.Debug|x64.Build.0 = Debug|x64
+		{FB8EA0F2-AFC0-4D78-8021-F0C77DA36F6D}.Debug|x86.ActiveCfg = Debug|Win32
+		{FB8EA0F2-AFC0-4D78-8021-F0C77DA36F6D}.Debug|x86.Build.0 = Debug|Win32
+		{FB8EA0F2-AFC0-4D78-8021-F0C77DA36F6D}.Release|x64.ActiveCfg = Release|x64
+		{FB8EA0F2-AFC0-4D78-8021-F0C77DA36F6D}.Release|x64.Build.0 = Release|x64
+		{FB8EA0F2-AFC0-4D78-8021-F0C77DA36F6D}.Release|x86.ActiveCfg = Release|Win32
+		{FB8EA0F2-AFC0-4D78-8021-F0C77DA36F6D}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {25599ED8-C81F-459A-8950-41938C9414AE}
+	EndGlobalSection
+EndGlobal
