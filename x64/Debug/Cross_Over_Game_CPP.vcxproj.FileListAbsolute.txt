@@ -1,0 +1,3 @@
+D:\C++ Projects\Cross Over Game C++\Cross_Over_Game_CPP\x64\Debug\Cross_Over_Game_CPP.vcxproj.CopyComplete
+D:\C++ Projects\Cross Over Game C++\Cross_Over_Game_CPP\x64\Debug\Cross_Over_Game_CPP.exe
+D:\C++ Projects\Cross Over Game C++\Cross_Over_Game_CPP\x64\Debug\raylib.dll
