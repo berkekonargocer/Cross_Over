@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Cross_Over_Game_CPP.cpp">
+    <ClCompile Include="CrossOver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
