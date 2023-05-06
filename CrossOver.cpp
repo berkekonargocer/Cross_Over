@@ -23,27 +23,27 @@ public:
 class RectangleObject
 {
 public:
-	int RectangleObjectPositionX = 120;
-	int RectangleObjectPositionY = 0;
-	int RectangleObjectWidth = 50;
-	int RectangleObjectHeight = 50;
+	int CurrentXPosition = 120;
+	int CurrentYPosition = 0;
+	int Width = 50;
+	int Height = 50;
 	int DirectionX = 1;
 	int DirectionY = 1;
 	int MoveSpeed = 10;
-	Color RectangleObjectColor{ RED };
+	Color ObjectColor{ RED };
 
 	RectangleObject() = default;
 
 	RectangleObject(int startPositionX, int startPositionY, const int width, const int height, int directionX, int directionY, int moveSpeed, const Color color)
 	{
-		RectangleObjectPositionX = startPositionX;
-		RectangleObjectPositionY = startPositionY;
-		RectangleObjectWidth = width;
-		RectangleObjectHeight = height;
+		CurrentXPosition = startPositionX;
+		CurrentYPosition = startPositionY;
+		Width = width;
+		Height = height;
 		DirectionX = directionX;
 		DirectionY = directionY;
 		MoveSpeed = moveSpeed;
-		RectangleObjectColor = color;
+		ObjectColor = color;
 	}
 };
 
@@ -58,11 +58,12 @@ int main()
 	rectangle1.MoveSpeed = 12;
 
 	InitWindow(game->SCREEN_WIDTH, game->SCREEN_HEIGHT, "Cross Over");
-	bool isCollidedWithRectangle = false;
 	SetTargetFPS(144);
 
+	bool isCollidedWithRectangle = false;
+
 	// ------------------------------------------ GAME LOOP START -------------------------------------
-	while (WindowShouldClose() == false)
+	while (!WindowShouldClose())
 	{
 		BeginDrawing();
 		ClearBackground(BLACK);
@@ -79,10 +80,10 @@ int main()
 
 
 		// ----------------------------------- SET RECTANGLE EDGES ------------------------------------
-		const int rectangleUpperYEdge = rectangle1.RectangleObjectPositionY;
-		const int rectangleBottomYEdge = rectangle1.RectangleObjectPositionY + rectangle1.RectangleObjectHeight;
-		const int rectangleRightXEdge = rectangle1.RectangleObjectPositionX + rectangle1.RectangleObjectWidth;
-		const int rectangleLeftXEdge = rectangle1.RectangleObjectPositionX;
+		const int rectangleUpperYEdge = rectangle1.CurrentYPosition;
+		const int rectangleBottomYEdge = rectangle1.CurrentYPosition + rectangle1.Height;
+		const int rectangleRightXEdge = rectangle1.CurrentXPosition + rectangle1.Width;
+		const int rectangleLeftXEdge = rectangle1.CurrentXPosition;
 		// --------------------------------------------------------------------------------------------
 
 
@@ -110,9 +111,9 @@ int main()
 		if (!isCollidedWithRectangle)
 		{
 			// ------------------------------ MOVE RECTANGLE TO UP AND DOWN -------------------------------
-			rectangle1.RectangleObjectPositionY += rectangle1.DirectionY * rectangle1.MoveSpeed;
+			rectangle1.CurrentYPosition += rectangle1.DirectionY * rectangle1.MoveSpeed;
 
-			if (rectangle1.RectangleObjectPositionY > game->SCREEN_HEIGHT - rectangle1.RectangleObjectHeight || rectangle1.RectangleObjectPositionY < 0)
+			if (rectangle1.CurrentYPosition > game->SCREEN_HEIGHT - rectangle1.Height || rectangle1.CurrentYPosition < 0)
 			{
 				rectangle1.DirectionY = -rectangle1.DirectionY;
 			}
@@ -122,8 +123,8 @@ int main()
 			// -------------------------------------- DRAW OBJECTS ----------------------------------------
 			DrawCircle(playerCircle->currentXPosition, playerCircle->currentYPosition, playerCircle->RADIUS, PURPLE);
 
-			DrawRectangle(rectangle1.RectangleObjectPositionX, rectangle1.RectangleObjectPositionY,
-				rectangle1.RectangleObjectWidth, rectangle1.RectangleObjectHeight, rectangle1.RectangleObjectColor);
+			DrawRectangle(rectangle1.CurrentXPosition, rectangle1.CurrentYPosition,
+				rectangle1.Width, rectangle1.Height, rectangle1.ObjectColor);
 			// --------------------------------------------------------------------------------------------
 		}
 		else
@@ -155,4 +156,6 @@ int main()
 		EndDrawing();
 	}
 	// ----------------------------------------- GAME LOOP END ----------------------------------------
+
+	CloseWindow();
 }
