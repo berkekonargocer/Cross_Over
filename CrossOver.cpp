@@ -12,7 +12,7 @@ public:
 	int currentYPosition = 375;
 };
 
-class Game
+class GameSettings
 {
 public:
 	const int SCREEN_WIDTH = 1024;
@@ -49,15 +49,14 @@ public:
 
 int main()
 {
-
-	auto* game = new Game();
+	auto* gameSettings = new GameSettings();
 	auto* playerCircle = new PlayerCircle();
 	const auto* rectangleObject = new RectangleObject[5];
 
 	RectangleObject rectangle1 = rectangleObject[0];
 	rectangle1.MoveSpeed = 12;
 
-	InitWindow(game->SCREEN_WIDTH, game->SCREEN_HEIGHT, "Cross Over");
+	InitWindow(gameSettings->SCREEN_WIDTH, gameSettings->SCREEN_HEIGHT, "Cross Over");
 	SetTargetFPS(144);
 
 	bool isCollidedWithRectangle = false;
@@ -88,7 +87,7 @@ int main()
 
 
 		// ------------------------------------- MOVEMENT INPUTS --------------------------------------
-		if (IsKeyDown(KEY_D) && circleRightXEdge < game->SCREEN_WIDTH)
+		if (IsKeyDown(KEY_D) && circleRightXEdge < gameSettings->SCREEN_WIDTH)
 		{
 			playerCircle->currentXPosition += 3;
 		}
@@ -100,7 +99,7 @@ int main()
 		{
 			playerCircle->currentYPosition -= 3;
 		}
-		if (IsKeyDown(KEY_S) && circleBottomYEdge < game->SCREEN_HEIGHT)
+		if (IsKeyDown(KEY_S) && circleBottomYEdge < gameSettings->SCREEN_HEIGHT)
 		{
 			playerCircle->currentYPosition += 3;
 		}
@@ -113,7 +112,7 @@ int main()
 			// ------------------------------ MOVE RECTANGLE TO UP AND DOWN -------------------------------
 			rectangle1.CurrentYPosition += rectangle1.DirectionY * rectangle1.MoveSpeed;
 
-			if (rectangle1.CurrentYPosition > game->SCREEN_HEIGHT - rectangle1.Height || rectangle1.CurrentYPosition < 0)
+			if (rectangle1.CurrentYPosition > gameSettings->SCREEN_HEIGHT - rectangle1.Height || rectangle1.CurrentYPosition < 0)
 			{
 				rectangle1.DirectionY = -rectangle1.DirectionY;
 			}
