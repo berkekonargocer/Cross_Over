@@ -15,8 +15,8 @@ public:
 class GameSettings
 {
 public:
-	const int SCREEN_WIDTH = 1024;
-	const int SCREEN_HEIGHT = 768;
+	const int SCREEN_WIDTH = 1440;
+	const int SCREEN_HEIGHT = 900;
 	int level = 1;
 };
 
@@ -47,7 +47,19 @@ public:
 	}
 };
 
+void GameLoop();
+
 int main()
+{
+	// ------------------------------------------ GAME LOOP START -------------------------------------
+	GameLoop();
+
+	// ----------------------------------------- GAME LOOP END ----------------------------------------
+	CloseWindow();
+}
+
+
+void GameLoop()
 {
 	auto* gameSettings = new GameSettings();
 	auto* playerCircle = new PlayerCircle();
@@ -61,7 +73,6 @@ int main()
 
 	bool isCollidedWithRectangle = false;
 
-	// ------------------------------------------ GAME LOOP START -------------------------------------
 	while (!WindowShouldClose())
 	{
 		BeginDrawing();
@@ -128,9 +139,9 @@ int main()
 		}
 		else
 		{
-			DrawText("GAME OVER!", 420, 325, 25, RED);
+			DrawText("GAME OVER!", (gameSettings->SCREEN_WIDTH / 2) - 75, gameSettings->SCREEN_HEIGHT / 2, 25, RED);
 
-			DrawText("PRESS ENTER TO TRY AGAIN", 315, 375, 25, GREEN);
+			DrawText("PRESS ENTER TO TRY AGAIN", (gameSettings->SCREEN_WIDTH / 2) - 185, (gameSettings->SCREEN_HEIGHT / 2) + 50, 25, GREEN);
 
 			if (IsKeyPressed(KEY_ENTER))
 			{
@@ -151,10 +162,6 @@ int main()
 
 
 		// ------------------------------------- GAME LOGIC END ---------------------------------------
-
 		EndDrawing();
 	}
-	// ----------------------------------------- GAME LOOP END ----------------------------------------
-
-	CloseWindow();
 }

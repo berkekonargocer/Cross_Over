@@ -1,3 +1,6 @@
 
 .vs/Cross_Over_Game_CPP/v17/Preview/Browse.VC.opendb
 *.db
+*.vsidx
+*.vsidx
+*.opendb

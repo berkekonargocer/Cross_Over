@@ -1,0 +1,4 @@
+﻿  CrossOver.cpp
+D:\C++ Projects\Cross Over Game C++\Cross_Over_Game_CPP\CrossOver.cpp(9,21): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
+D:\C++ Projects\Cross Over Game C++\Cross_Over_Game_CPP\CrossOver.cpp(134,91): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+  Cross_Over_Game_CPP.vcxproj -> D:\C++ Projects\Cross Over Game C++\Cross_Over_Game_CPP\x64\Debug\Cross_Over_Game_CPP.exe
