@@ -6,7 +6,7 @@ class PlayerCircle
 public:
 	const int START_POSITION_X = 30;
 	const int START_POSITION_Y = 375;
-	const int RADIUS = 25.0f;
+	const int RADIUS = 25.00f;
 
 	int currentXPosition = 30;
 	int currentYPosition = 375;
@@ -82,35 +82,35 @@ void GameLoop()
 
 
 		// --------------------------------- SET PLAYER CIRCLE EDGES ----------------------------------
-		const int circleUpperYEdge = playerCircle->currentYPosition - playerCircle->RADIUS;
-		const int circleBottomYEdge = playerCircle->currentYPosition + playerCircle->RADIUS;
-		const int circleRightXEdge = playerCircle->currentXPosition + playerCircle->RADIUS;
-		const int circleLeftXEdge = playerCircle->currentXPosition - playerCircle->RADIUS;
+		const int circleUpperEdge = playerCircle->currentYPosition - playerCircle->RADIUS;
+		const int circleBottomEdge = playerCircle->currentYPosition + playerCircle->RADIUS;
+		const int circleRightEdge = playerCircle->currentXPosition + playerCircle->RADIUS;
+		const int circleLeftEdge = playerCircle->currentXPosition - playerCircle->RADIUS;
 		// --------------------------------------------------------------------------------------------
 
 
 		// ----------------------------------- SET RECTANGLE EDGES ------------------------------------
-		const int rectangleUpperYEdge = rectangle1.CurrentYPosition;
-		const int rectangleBottomYEdge = rectangle1.CurrentYPosition + rectangle1.Height;
-		const int rectangleRightXEdge = rectangle1.CurrentXPosition + rectangle1.Width;
-		const int rectangleLeftXEdge = rectangle1.CurrentXPosition;
+		const int rectangleUpperEdge = rectangle1.CurrentYPosition;
+		const int rectangleBottomEdge = rectangle1.CurrentYPosition + rectangle1.Height;
+		const int rectangleRightEdge = rectangle1.CurrentXPosition + rectangle1.Width;
+		const int rectangleLeftEdge = rectangle1.CurrentXPosition;
 		// --------------------------------------------------------------------------------------------
 
 
 		// ------------------------------------- MOVEMENT INPUTS --------------------------------------
-		if (IsKeyDown(KEY_D) && circleRightXEdge < gameSettings->SCREEN_WIDTH)
+		if (IsKeyDown(KEY_D) && circleRightEdge < gameSettings->SCREEN_WIDTH)
 		{
 			playerCircle->currentXPosition += 3;
 		}
-		if (IsKeyDown(KEY_A) && circleLeftXEdge > 0)
+		if (IsKeyDown(KEY_A) && circleLeftEdge > 0)
 		{
 			playerCircle->currentXPosition -= 3;
 		}
-		if (IsKeyDown(KEY_W) && circleUpperYEdge > 0)
+		if (IsKeyDown(KEY_W) && circleUpperEdge > 0)
 		{
 			playerCircle->currentYPosition -= 3;
 		}
-		if (IsKeyDown(KEY_S) && circleBottomYEdge < gameSettings->SCREEN_HEIGHT)
+		if (IsKeyDown(KEY_S) && circleBottomEdge < gameSettings->SCREEN_HEIGHT)
 		{
 			playerCircle->currentYPosition += 3;
 		}
@@ -129,6 +129,11 @@ void GameLoop()
 			}
 			// --------------------------------------------------------------------------------------------
 
+			if (circleUpperEdge <= rectangleBottomEdge && circleBottomEdge >= rectangleUpperEdge &&
+				circleRightEdge >= rectangleLeftEdge && circleLeftEdge <= rectangleRightEdge)
+			{
+				isCollidedWithRectangle = true;
+			}
 
 			// -------------------------------------- DRAW OBJECTS ----------------------------------------
 			DrawCircle(playerCircle->currentXPosition, playerCircle->currentYPosition, playerCircle->RADIUS, PURPLE);
@@ -152,13 +157,6 @@ void GameLoop()
 		}
 
 
-		if (circleUpperYEdge <= rectangleBottomYEdge &&
-			circleBottomYEdge >= rectangleUpperYEdge &&
-			circleRightXEdge >= rectangleLeftXEdge &&
-			circleLeftXEdge <= rectangleRightXEdge)
-		{
-			isCollidedWithRectangle = true;
-		}
 
 
 		// ------------------------------------- GAME LOGIC END ---------------------------------------
